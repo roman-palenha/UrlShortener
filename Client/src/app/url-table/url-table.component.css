@@ -1,0 +1,40 @@
+.wrapper{
+    width: 1000px;
+    margin-left: 200px;
+  }
+  .add-student-btn {
+    display: block;
+    margin-left: auto;
+    margin-bottom: 15px;
+  }
+  .delete-btn, .edit-btn{
+    margin: 5px;
+  }
+  .add-student-btn:hover {
+    cursor: pointer;
+  }
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .table th,
+  .table td {
+    border: 1px solid #c861ed;
+    text-align: center;
+  }
+  .table th {
+    font-weight: 400;
+    font-size: 12px;
+    padding: 20px 0;
+  }
+    .table td {
+    font-size: 16x;
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  .form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }

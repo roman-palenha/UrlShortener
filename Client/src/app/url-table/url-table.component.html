@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <form class="form" #addForm="ngForm" (ngSubmit)="onAdd()">
+  <div>
+    <label for="url">Url:</label>
+    <input type="text" id="url" [(ngModel)]="inputUrl" pattern="^(?:https?://)?(?:www\.)?[\w\-\.]+\.\w{2,}(?:\.\w{2,})?(?:[\w\-._/?=#&%]*?)$" required>
+  </div>
+  <button class="add-student-btn" type="submit" [disabled]="!addForm.valid">Add</button>
+  </form>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Original URL</th>
+      <th>Shorted URL</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>        
+    <tr *ngFor="let url of dataSource">
+      <td>{{ url.fullUrl }}</td>
+      <td> <a href="{{ url.shorten }}" target="_blank">{{ url.shorten }}</a></td>
+      <td >
+        <button class="edit-btn" (click)="onInfo(url)">Info</button>
+        <button class="delete-btn" (click)="onDelete(url)">
+           Delete
+          </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -79,7 +79,7 @@ namespace UrlShortener.Business
                 id /= Alphabet.Length;
             }
 
-            return "https://localhost:7164" + string.Join(string.Empty, sb.ToString().Reverse());
+            return "https://localhost:7164/" + string.Join(string.Empty, sb.ToString().Reverse());
         }
     }
 }
