@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrlShortener.Domain;
 
@@ -11,9 +12,11 @@ using UrlShortener.Domain;
 namespace UrlShortener.Domain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230407151125_AddedAbout")]
+    partial class AddedAbout
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,13 +40,6 @@ namespace UrlShortener.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AboutMessages");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Message = "\r\nTo short url I used a Bijective Function f. \r\nIf you want more, visit <a>https://en.wikipedia.org/wiki/Bijection</a>"
-                        });
                 });
 
             modelBuilder.Entity("UrlShortener.Domain.Models.ShortenUrl", b =>
@@ -96,15 +92,6 @@ namespace UrlShortener.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "admin@gmail.com",
-                            Password = "2af9b1ba42dc5eb01743e6b3759b6e4b",
-                            Role = 1
-                        });
                 });
 #pragma warning restore 612, 618
         }

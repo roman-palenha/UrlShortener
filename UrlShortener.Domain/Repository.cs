@@ -9,7 +9,7 @@ namespace UrlShortener.Domain
 
         public Repository(AppDbContext db)
         {
-            _dbContext = db;
+            _dbContext = db ?? throw new ArgumentNullException(nameof(db));
         }
 
         public void Create(T model)

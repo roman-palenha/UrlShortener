@@ -7,16 +7,11 @@ namespace UrlShortener.Business.Helpers
     {
         public static string HashPassword(string password)
         {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] fromData = Encoding.UTF8.GetBytes(password);
-            byte[] targetData = md5.ComputeHash(fromData);
-            string byte2String = null;
+            var md5 = new MD5CryptoServiceProvider();
+            var fromData = Encoding.UTF8.GetBytes(password);
+            var targetData = md5.ComputeHash(fromData);
 
-            for (int i = 0; i < targetData.Length; i++)
-            {
-                byte2String += targetData[i].ToString("x2");
-            }
-            return byte2String;
+            return targetData.Aggregate<byte, string>(null, (current, t) => current + t.ToString("x2"));
         }
     }
 }

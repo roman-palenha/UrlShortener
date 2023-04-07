@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
+using UrlShortener.Business;
 using UrlShortener.Business.Interfaces;
 using UrlShortener.Domain.Models;
 
@@ -13,7 +14,7 @@ namespace UrlShortener.Controllers
 
         public UrlController(IUrlService urlService)
         {
-            _urlService = urlService;
+            _urlService = urlService ?? throw new ArgumentNullException(nameof(urlService));
         }
 
         public IActionResult Index()
@@ -39,7 +40,7 @@ namespace UrlShortener.Controllers
         public IActionResult GetAll()
         {
             var result = _urlService.GetAll();
-            if (!User.IsInRole("Admin"))
+            if (!User.IsInRole(Constants.Admin))
                 result = result.Where(x => x.CreatedBy.Equals(User.Identity.Name));
 
             return Ok(result);
@@ -49,7 +50,7 @@ namespace UrlShortener.Controllers
         public IActionResult Info(int id)
         {
             var result = _urlService.GetById(id);
-            if (!User.IsInRole("Admin") && !User.Identity.Name.Equals(result.CreatedBy))
+            if (!User.IsInRole(Constants.Admin) && !User.Identity.Name.Equals(result.CreatedBy))
             {
                 return Unauthorized();
             }
@@ -60,14 +61,13 @@ namespace UrlShortener.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody]UrlViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                model.CreatedBy = User.Identity.Name;
-                var result = await _urlService.Create(model);
-                return Ok(result);
-            }
-           
-            return BadRequest();
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            model.CreatedBy = User.Identity.Name;
+            var result = await _urlService.Create(model);
+            return Ok(result);
+
         }
 
         [HttpDelete]

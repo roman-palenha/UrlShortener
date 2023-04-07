@@ -13,7 +13,7 @@ namespace UrlShortener.Business
 
         public UserService(IRepository<User> repository)
         {
-            _repository = repository;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository);
         }
 
         public IQueryable<User> GetAll()

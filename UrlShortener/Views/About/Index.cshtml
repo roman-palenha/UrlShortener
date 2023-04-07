@@ -1,0 +1,9 @@
+﻿@model UrlShortener.Domain.Models.AboutMessage
+
+<textarea cols="140" rows = "30" readonly>@Model.Message</textarea>
+<br />
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="Edit" asp-controller="About" >Edit</a>
+}
+    

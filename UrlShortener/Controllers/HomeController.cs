@@ -11,9 +11,10 @@ namespace UrlShortener.Controllers
     public class HomeController : Controller
     {
         private readonly IUserService _userService;
+
         public HomeController(IUserService userService)
         {
-            _userService = userService;
+            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
         public IActionResult Index()
@@ -26,7 +27,6 @@ namespace UrlShortener.Controllers
             return View();
         }
 
-        //POST: Register
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async  Task<IActionResult> Register(RegisterViewModel model)
