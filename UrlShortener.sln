@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShortener", "UrlShortene
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShortener.Domain", "UrlShortener.Domain\UrlShortener.Domain.csproj", "{D11B5061-3D6B-479F-A0FF-C4468AC7E638}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Business", "UrlShortener.Business\UrlShortener.Business.csproj", "{6732AC48-248B-4CD7-9C91-DEC941C732DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShortener.Business", "UrlShortener.Business\UrlShortener.Business.csproj", "{6732AC48-248B-4CD7-9C91-DEC941C732DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Tests", "UrlShortener.Tests\UrlShortener.Tests.csproj", "{CECEE694-46D4-4459-A040-FF6B78910A2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6732AC48-248B-4CD7-9C91-DEC941C732DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6732AC48-248B-4CD7-9C91-DEC941C732DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6732AC48-248B-4CD7-9C91-DEC941C732DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CECEE694-46D4-4459-A040-FF6B78910A2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CECEE694-46D4-4459-A040-FF6B78910A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CECEE694-46D4-4459-A040-FF6B78910A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CECEE694-46D4-4459-A040-FF6B78910A2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
