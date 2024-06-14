@@ -9,5 +9,6 @@ namespace UrlShortener.Business.Interfaces
         public ShortenUrl GetById(int id);
         public Task Remove(int id);
         public int Decode(string encoded);
+        ShortenUrl GetByPath(string path);
     }
 }

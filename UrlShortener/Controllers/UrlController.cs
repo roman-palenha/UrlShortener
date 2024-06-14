@@ -29,7 +29,7 @@ namespace UrlShortener.Controllers
                 return BadRequest();
 
             var id = _urlService.Decode(path);
-            var origin = _urlService.GetById(id);
+            var origin = _urlService.GetByPath(path);
             if (origin == null)
                 return NotFound();
 

@@ -34,6 +34,12 @@ namespace UrlShortener.Business
             return result;
         }
 
+        public ShortenUrl GetByPath(string path)
+        {
+            var result = _repository.GetAll().FirstOrDefault(x => x.Shorten.Equals(path));
+            return result;
+        }
+
         public async Task Remove(int id)
         {
             var url = _repository.Get(id);
@@ -43,7 +49,7 @@ namespace UrlShortener.Business
 
         private ShortenUrl ShortUrl(UrlViewModel model)
         {
-            var last = _repository.GetAll().Reverse().FirstOrDefault();
+            var last = _repository.GetAll().AsEnumerable().Reverse().FirstOrDefault();
             int id = last == null ? 0 : last.Id + 1;
 
             return new ShortenUrl
@@ -72,7 +78,7 @@ namespace UrlShortener.Business
                 id /= Constants.Alphabet.Length;
             }
 
-            return Constants.MyUrl + string.Join(string.Empty, sb.ToString().Reverse());
+            return string.Join(string.Empty, sb.ToString().Reverse());
         }
     }
 }
